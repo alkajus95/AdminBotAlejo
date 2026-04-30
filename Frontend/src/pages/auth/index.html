@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdminBot | CyberVallenato Party Edition</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body class="min-h-screen flex items-center justify-end p-8 md:pr-40 app-entrance">
+    
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()" class="glass-ultimate p-4 rounded-full text-white hover:scale-110 transition shadow-xl">
+        <i id="theme-icon" data-lucide="moon"></i>
+      </button>
+    </div>
+
+    <div class="music-control">
+      <button id="music-btn" onclick="toggleMusic()" class="glass-ultimate p-4 rounded-full text-white hover:scale-110 transition flex items-center gap-3 shadow-2xl">
+        <i id="music-icon" data-lucide="play"></i>
+        <span id="music-text" class="text-xs font-bold uppercase tracking-widest">Escuchar La Plata</span>
+      </button>
+      <audio id="vallenato-audio" loop>
+        <source src="./laplata.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div id="app" class="w-full max-w-md relative z-10">
+      <div class="glass-aura-wrapper relative">
+        <div class="glass-ultimate p-10 rounded-[2.5rem] shadow-2xl">
+          
+          <div class="text-center mb-12 relative z-20">
+            <div class="relative inline-flex items-center justify-center w-24 h-24 bg-amber-600 rounded-2xl mb-6 shadow-lg mt-6">
+              <div class="sombrero-container">
+                <svg viewBox="0 0 100 60" fill="none">
+                  <ellipse cx="50" cy="45" rx="45" ry="12" fill="#fff" fill-opacity="0.9" stroke="#000" stroke-width="2"/>
+                  <path d="M25 40C25 20 75 20 75 40" fill="#fff" stroke="#000" stroke-width="2"/>
+                  <path d="M35 28 65 28M30 35 70 35M20 45 80 45" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <i data-lucide="bot" class="text-white w-14 h-14 relative z-10"></i>
+            </div>
+            
+            <h1 class="text-5xl font-bold tracking-tight neon-text">AdminBot</h1>
+            <p id="tagline" class="text-white font-medium italic mt-2">"Con mucho gusto"</p>
+          </div>
+
+         <form id="login-form" class="space-y-8 relative z-20">
+  <div class="relative">
+    <i data-lucide="user" class="absolute left-4 top-4 text-amber-300 w-5 h-5"></i>
+    <input type="email" id="email" placeholder="Correo Usuario" required
+           class="input-glass w-full pl-12 pr-4 py-4 rounded-2xl text-sm font-medium outline-none">
+  </div>
+
+  <div class="relative">
+    <i data-lucide="lock" class="absolute left-4 top-4 text-amber-300 w-5 h-5"></i>
+    <input type="password" id="password" placeholder="Contraseña" required
+           class="input-glass w-full pl-12 pr-4 py-4 rounded-2xl text-sm font-medium outline-none">
+  </div>
+
+  <p id="ErrorMessage" class="text-red-400 text-xs text-center font-bold"></p>
+
+  <button type="submit" class="btn-mega-aura w-full text-white text-base font-bold py-4 rounded-2xl transition-all hover:scale-105 uppercase tracking-widest">
+    Entrar al Sistema
+  </button>
+</form>
+
+<script type="module" src="auth.js"></script>
+
+          <div class="mt-12 pt-8 border-t border-white/10 text-center text-slate-400 text-[10px] uppercase tracking-widest">
+            Desarrollado por Alejandro Gracia | 2026
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      lucide.createIcons();
+
+      const audio = document.getElementById('vallenato-audio');
+      const musicBtn = document.getElementById('music-btn');
+      const musicText = document.getElementById('music-text');
+      let isPlaying = false;
+      let partyInterval; // Variable para el modo fiesta
+
+      function toggleMusic() {
+        const icon = document.getElementById('music-icon');
+        
+        if (isPlaying) {
+          // DETENER FIESTA
+          audio.pause();
+          icon.setAttribute('data-lucide', 'play');
+          musicText.innerText = "Escuchar La Plata";
+          musicBtn.classList.remove('party-glow');
+          
+          clearInterval(partyInterval); // Detener el parpadeo
+          document.body.classList.remove('light-mode'); // Volver a modo oscuro
+          document.getElementById('tagline').innerText = '"Con mucho gusto"';
+        } else {
+          // EMPEZAR FIESTA
+          audio.play().catch(e => console.log("Falta el archivo laplata.mp3"));
+          icon.setAttribute('data-lucide', 'pause');
+          musicText.innerText = "¡SÁBADO DE CORONA!";
+          musicBtn.classList.add('party-glow');
+          
+          // Lógica del modo fiesta rápido
+          partyInterval = setInterval(() => {
+            toggleTheme(true); // Pasar 'true' para indicar que es automático
+          }, 250); // Cambia cada cuarto de segundo
+        }
+        isPlaying = !isPlaying;
+        lucide.createIcons();
+      }
+
+      function toggleTheme(isAuto = false) {
+        const body = document.body;
+        const icon = document.getElementById('theme-icon');
+        const tagline = document.getElementById('tagline');
+
+        body.classList.toggle('light-mode');
+
+        if (!isAuto) {
+          // Si el usuario lo cambia manualmente, actualizamos el icono
+          if (body.classList.contains('light-mode')) {
+            icon.setAttribute('data-lucide', 'sun');
+            tagline.innerText = '"¡Qué elegancia, compadre!"';
+          } else {
+            icon.setAttribute('data-lucide', 'moon');
+            tagline.innerText = '"Con mucho gusto"';
+          }
+          lucide.createIcons();
+        } else {
+          // En modo automático solo cambiamos el texto aleatoriamente para más risas
+          const frases = ['"¡SÍRVALO!"', '"¡CON MUCHO GUSTO!"', '"¡QUÉ ELEGANCIA!"', '"¡DAME LA PLATA!"'];
+          tagline.innerText = frases[Math.floor(Math.random() * frases.length)];
+        }
+      }
+    </script>
+  </body>
+</html>

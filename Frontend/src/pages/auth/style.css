@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+      
+      :root {
+        --bg-overlay: linear-gradient(135deg, rgba(22, 16, 11, 0.95) 0%, rgba(131, 98, 50, 0.75) 40%, rgba(97, 58, 15, 0.95) 100%);
+        --bg-image: url('./diomedes.jpg');
+        --aura-conic: conic-gradient(from 180deg at 50% 50%, rgba(251, 191, 142, 0) 0%, rgba(251, 191, 142, 0.5) 15%, rgba(250, 235, 215, 0.2) 35%, rgba(255, 255, 255, 0.1) 50%, rgba(192, 132, 252, 0.2) 65%, rgba(251, 191, 142, 0.5) 85%, rgba(251, 191, 142, 0) 100%);
+        --glass-bg: rgba(255, 248, 240, 0.08);
+        --accent-btn: #e11d48;
+        --text-neon: rgba(251, 191, 142, 0.5);
+      }
+
+      /* MODO ROSADO FIESTA (Deep Pink / Magenta) */
+      body.light-mode {
+        --bg-overlay: linear-gradient(135deg, rgba(80, 6, 40, 0.9) 0%, rgba(131, 24, 67, 0.75) 100%);
+        --bg-image: url('./diomedes.jpg'); 
+        --aura-conic: conic-gradient(from 180deg at 50% 50%, rgba(255, 20, 147, 0) 0%, rgba(255, 20, 147, 0.8) 20%, rgba(255, 105, 180, 0.6) 50%, rgba(255, 20, 147, 0.8) 80%, rgba(255, 20, 147, 0) 100%);
+        --glass-bg: rgba(0, 0, 0, 0.4);
+        --accent-btn: #db2777;
+        --text-neon: rgba(255, 20, 147, 1);
+      }
+
+      body { 
+        font-family: 'Inter', sans-serif; 
+        background-image: var(--bg-overlay), var(--bg-image); 
+        background-size: cover;
+        background-position: center; 
+        background-attachment: fixed;
+        transition: all 0.1s linear; /* Transición súper rápida para el modo fiesta */
+        overflow: hidden;
+      }
+
+      .app-entrance {
+        animation: dynamic-entrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      @keyframes dynamic-entrance {
+        0% { opacity: 0; transform: scale(0.9) translateY(20px); filter: blur(10px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+
+      .glass-ultimate {
+        background: var(--glass-bg);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .glass-aura-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -40%; left: -40%; width: 180%; height: 180%;
+        background: var(--aura-conic);
+        animation: aura-rotate 5s linear infinite;
+        z-index: 0;
+        filter: blur(60px);
+        pointer-events: none;
+      }
+
+      @keyframes aura-rotate { 100% { transform: rotate(360deg); } }
+
+      .neon-text {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        text-shadow: 0 0 10px var(--text-neon), 0 0 20px var(--text-neon);
+      }
+
+      .input-glass {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s;
+      }
+
+      .btn-mega-aura {
+        background-color: var(--accent-btn);
+        box-shadow: 0 0 30px var(--text-neon);
+      }
+
+      .sombrero-container {
+        position: absolute;
+        top: -20px; left: 50%; transform: translateX(-50%);
+        width: 65px; z-index: 20;
+      }
+
+      .music-control { position: fixed; bottom: 2rem; left: 2rem; z-index: 50; }
+      .theme-toggle { position: fixed; top: 2rem; right: 2rem; z-index: 50; }
+
+      /* Animación para el botón de música cuando está activo */
+      .party-glow {
+        animation: party-pulse 0.5s infinite alternate;
+      }
+      @keyframes party-pulse {
+        from { transform: scale(1); box-shadow: 0 0 20px #db2777; }
+        to { transform: scale(1.1); box-shadow: 0 0 40px #3b82f6; }
+      }
