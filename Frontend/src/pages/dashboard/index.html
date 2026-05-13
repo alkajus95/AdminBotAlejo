@@ -30,7 +30,7 @@
             overflow: hidden; 
         }
 
-        /* --- SIDEBAR ESTILO DINASTÍA --- */
+        /* --- SIDEBAR --- */
         .sidebar { 
             width: 220px; 
             background: var(--sidebar); 
@@ -40,6 +40,7 @@
             padding: 20px 0;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5);
         }
+
         .sidebar-title { 
             color: var(--gold); 
             text-align: center; 
@@ -49,6 +50,7 @@
             letter-spacing: 2px;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
+
         .nav-item { 
             padding: 15px 25px; 
             color: #888; 
@@ -58,15 +60,18 @@
             transition: 0.3s;
             font-weight: 500;
         }
+
         .nav-item:hover, .nav-item.active { 
             background: #1e1e1e; 
             color: var(--gold); 
             border-left: 4px solid var(--gold); 
         }
+
         .nav-item i { margin-right: 12px; width: 20px; font-size: 1.1rem; }
 
-        /* --- CONTENIDO PRINCIPAL --- */
+        /* --- CONTENIDO --- */
         .content { flex: 1; overflow-y: auto; padding: 25px; }
+
         .header { 
             display: flex; 
             justify-content: space-between; 
@@ -75,11 +80,12 @@
             border-bottom: 1px solid #333;
             padding-bottom: 15px;
         }
+
         .header h2 { margin: 0; font-family: 'Georgia', serif; font-style: italic; color: var(--gold); }
 
         .layout { display: grid; grid-template-columns: 1fr 340px; gap: 25px; }
 
-        /* --- GRID DE TARJETAS (Mejorado) --- */
+        /* --- GRID Y TARJETAS --- */
         .student-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
@@ -94,107 +100,55 @@
             border-left: 5px solid var(--gold); 
             position: relative; 
             transition: 0.3s;
-            height: 110px; /* Altura compacta horizontal */
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .card:hover { 
-            transform: translateY(-3px);
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
         }
 
-        .card h3 { 
-            margin: 0; 
-            font-size: 1.05rem; 
-            color: var(--gold); 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis;
-            max-width: 85%;
+        .card:hover { transform: translateY(-3px); border-color: var(--gold); }
+
+        .card h3 { margin: 0; font-size: 1rem; color: var(--gold); text-overflow: ellipsis; overflow: hidden; }
+
+        .card-actions { display: flex; gap: 8px; margin-top: 10px; }
+
+        .btn-card {
+            flex: 1; padding: 7px; font-size: 0.7rem; border-radius: 6px; border: none;
+            cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px;
         }
 
-        .card-info { 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 0.75rem; 
-            color: #aaa;
-            align-items: flex-end;
-        }
-        .card-info p { margin: 2px 0; }
-        .card-info i { color: var(--gold); margin-right: 5px; width: 12px; }
+        .btn-wa { background: #25d366; color: white; }
+        .btn-guar { background: #333; color: var(--gold); }
 
         .btn-delete { 
-            position: absolute; top: 12px; right: 12px; 
-            color: #444; cursor: pointer; background: none; border: none; 
-            font-size: 1rem; transition: 0.3s;
+            position: absolute; top: 12px; right: 12px; color: #444; 
+            cursor: pointer; background: none; border: none; font-size: 1rem;
         }
-        .btn-delete:hover { color: #ff4757; transform: rotate(90deg); }
+        .btn-delete:hover { color: #ff4757; }
 
-        /* --- PANELES LATERALES --- */
-        .panel { 
-            background: var(--card-bg); 
-            padding: 20px; 
-            border-radius: 15px; 
-            border: 1px solid #333; 
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .panel h3 { 
-            margin-top: 0; 
-            color: var(--gold); 
-            font-size: 1rem; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-        }
+        /* --- FORMULARIOS --- */
+        .panel { background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid #333; margin-bottom: 25px; }
+        .panel h3 { margin-top: 0; color: var(--gold); font-size: 0.9rem; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; }
 
-        /* --- FORMULARIO COMPACTO --- */
-        .form-group { margin-bottom: 10px; }
         input, select, button { 
-            width: 100%; 
-            padding: 10px; 
-            margin: 5px 0; 
-            border-radius: 8px; 
-            border: 1px solid #444; 
-            background: #0d0d0d; 
-            color: white; 
-            box-sizing: border-box; 
-            font-size: 0.85rem;
+            width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px; 
+            border: 1px solid #444; background: #0d0d0d; color: white; box-sizing: border-box; font-size: 0.85rem;
         }
-        input:focus { border-color: var(--gold); outline: none; }
-        .btn-submit { 
-            background: linear-gradient(to bottom, var(--gold), var(--gold-dark)); 
-            color: black; 
-            font-weight: bold; 
-            border: none; 
-            cursor: pointer; 
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
-        .btn-submit:hover { background: white; transform: scale(1.02); }
 
-        /* --- ESTADOS --- */
-        .badge { 
-            font-size: 0.6rem; 
-            padding: 2px 8px; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            display: inline-block;
-            margin-bottom: 5px;
+        .btn-submit { background: linear-gradient(to bottom, var(--gold), var(--gold-dark)); color: black; font-weight: bold; border: none; cursor: pointer; }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
         }
+        .modal-content { background: var(--card-bg); padding: 25px; border-radius: 15px; width: 360px; border: 1px solid var(--gold); }
+
+        /* --- BADGES --- */
+        .badge { font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
         .status-Activo { background: rgba(46, 213, 115, 0.2); color: #2ed573; }
         .status-Pendiente { background: rgba(255, 165, 2, 0.2); color: #ffa502; }
         .status-Negativo { background: rgba(255, 71, 87, 0.2); color: #ff4757; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
     </style>
 </head>
 <body>
@@ -204,7 +158,7 @@
         <a href="#" class="nav-item active"><i class="fa-solid fa-crown"></i> Dashboard</a>
         <a href="#" class="nav-item"><i class="fa-solid fa-users-rays"></i> Alumnos</a>
         <a href="#" class="nav-item"><i class="fa-solid fa-money-bill-gold"></i> Pagos</a>
-        <a href="#" class="nav-item" style="margin-top: auto;"><i class="fa-solid fa-record-vinyl"></i> Salir</a>
+        <a href="#" class="nav-item" style="margin-top: auto;"><i class="fa-solid fa-door-open"></i> Salir</a>
     </nav>
 
     <div class="content">
@@ -214,44 +168,55 @@
         </div>
 
         <div class="layout">
-            <div class="student-grid" id="studentsContainer">
-                </div>
+            <div class="student-grid" id="studentsContainer"></div>
 
             <div class="side-col">
                 <div class="panel">
-                    <h3><i class="fa-solid fa-chart-pie"></i> Estadísticas</h3>
-                    <div style="height: 180px;">
-                        <canvas id="statsChart"></canvas>
-                    </div>
+                    <h3><i class="fa-solid fa-chart-pie"></i> Estado de Cartera</h3>
+                    <div style="height: 160px;"><canvas id="statsChart"></canvas></div>
                 </div>
 
                 <div class="panel">
-                    <h3><i class="fa-solid fa-plus"></i> Nuevo Integrante</h3>
+                    <h3><i class="fa-solid fa-user-plus"></i> Nuevo Alumno</h3>
                     <form id="studentForm">
                         <div style="display: flex; gap: 5px;">
-                            <select id="document_type" style="width: 75px;">
+                            <select id="document_type" style="width: 80px;">
                                 <option value="TI">TI</option>
                                 <option value="CC">CC</option>
-                                <option value="RC">RC</option>
                             </select>
                             <input type="text" id="document_number" placeholder="N° Documento" required>
                         </div>
-                        <input type="text" id="student_code" placeholder="Código Estudiantil" required>
+                        <input type="text" id="student_code" placeholder="Código" required>
                         <input type="text" id="first_name" placeholder="Nombres" required>
                         <input type="text" id="last_name" placeholder="Apellidos" required>
-                        
-                        <label style="font-size: 0.65rem; color: #666; margin-left: 5px;">Fecha Nacimiento</label>
                         <input type="date" id="birth_date" required>
-                        
                         <select id="status">
                             <option value="Activo">Activo</option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="Negativo">Negativo</option>
                         </select>
-                        <button type="submit" class="btn-submit">Registrar en la Dinastía</button>
+                        <button type="submit" class="btn-submit">Añadir a la Dinastía</button>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="guardianModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:var(--gold); margin: 0 0 15px 0;">Vincular Acudiente</h3>
+            <form id="guardianForm">
+                <input type="hidden" id="modal_student_id">
+                <input type="text" id="g_first_name" placeholder="Nombre del Acudiente" required>
+                <input type="text" id="g_last_name" placeholder="Apellido del Acudiente" required>
+                <input type="text" id="g_phone" placeholder="Celular (Ej: 57300...)" required>
+                <input type="email" id="g_email" placeholder="Correo electrónico">
+                <input type="text" id="g_rel" placeholder="Parentesco (Papá, Mamá, etc.)" required>
+                <div style="display:flex; gap:10px; margin-top:20px;">
+                    <button type="submit" class="btn-submit" style="margin:0;">Guardar</button>
+                    <button type="button" onclick="closeModal()" style="background:#333; border:none; color:white; cursor:pointer;">Cerrar</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -259,25 +224,20 @@
         const API_URL = 'http://localhost:3000/api';
         let chart = null;
 
+        // --- UTILIDADES ---
         function notify(msg, success = true) {
             Toastify({
-                text: msg,
-                gravity: "top",
-                position: "right",
-                style: { 
-                    background: success ? "linear-gradient(to right, #b8860b, #FFD700)" : "#ff4757",
-                    color: success ? "black" : "white",
-                    fontWeight: "bold",
-                    borderRadius: "10px"
-                }
+                text: msg, gravity: "top", position: "right",
+                style: { background: success ? "linear-gradient(to right, #b8860b, #FFD700)" : "#ff4757", color: success ? "black" : "white" }
             }).showToast();
         }
 
         async function init() {
-            renderStudents();
-            renderChart();
+            await renderStudents();
+            await renderChart();
         }
 
+        // --- RENDERIZADO ---
         async function renderStudents() {
             try {
                 const res = await fetch(`${API_URL}/students`);
@@ -286,34 +246,27 @@
                 document.getElementById('countSummary').innerText = `${students.length} Muchachos Registrados`;
                 container.innerHTML = '';
 
-                if (students.length === 0) {
-                    container.innerHTML = '<p style="color:#444; grid-column: 1/-1; text-align:center;">No hay alumnos registrados aún.</p>';
-                    return;
-                }
-
                 students.forEach(s => {
                     container.innerHTML += `
                         <div class="card">
-                            <button class="btn-delete" onclick="removeStudent('${s.id}')" title="Eliminar">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
+                            <button class="btn-delete" onclick="removeStudent('${s.id}')"><i class="fa-solid fa-xmark"></i></button>
                             <div>
                                 <span class="badge status-${s.status}">${s.status}</span>
                                 <h3>${s.first_name} ${s.last_name}</h3>
+                                <p style="font-size:0.7rem; color:#666; margin:4px 0;">ID: ${s.document_number}</p>
                             </div>
-                            <div class="card-info">
-                                <div>
-                                    <p><i class="fa-solid fa-id-card"></i> ${s.document_number}</p>
-                                    <p><i class="fa-solid fa-fingerprint"></i> ${s.student_code}</p>
-                                </div>
-                                <div style="text-align: right; opacity: 0.5;">
-                                    <p>${s.document_type}</p>
-                                </div>
+                            <div class="card-actions">
+                                <button class="btn-card btn-wa" onclick="markAbsence('${s.id}')">
+                                    <i class="fa-brands fa-whatsapp"></i> FALTÓ
+                                </button>
+                                <button class="btn-card btn-guar" onclick="openModal('${s.id}')">
+                                    <i class="fa-solid fa-user-shield"></i> ACUDIENTE
+                                </button>
                             </div>
                         </div>
                     `;
                 });
-            } catch (error) { console.error(error); }
+            } catch (e) { console.error("Error cargando alumnos:", e); }
         }
 
         async function renderChart() {
@@ -321,7 +274,7 @@
                 const res = await fetch(`${API_URL}/stats`);
                 const stats = await res.json();
                 const ctx = document.getElementById('statsChart').getContext('2d');
-
+                
                 if (chart) chart.destroy();
                 chart = new Chart(ctx, {
                     type: 'doughnut',
@@ -330,33 +283,42 @@
                         datasets: [{
                             data: stats.map(s => s.count),
                             backgroundColor: ['#2ed573', '#ffa502', '#ff4757'],
-                            hoverOffset: 10,
                             borderWidth: 0
                         }]
                     },
-                    options: { 
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { 
-                            legend: { position: 'bottom', labels: { color: 'white', font: { size: 10 } } } 
-                        },
-                        cutout: '80%'
-                    }
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '75%' }
                 });
-            } catch (err) { console.error(err); }
+            } catch (e) { console.error("Error cargando gráfico:", e); }
+        }
+
+        // --- ACCIONES ---
+        async function markAbsence(id) {
+            if (!confirm("¿Deseas reportar la inasistencia por WhatsApp?")) return;
+            try {
+                const res = await fetch(`${API_URL}/asistencia`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ student_id: id, status: 'Ausente', observation: 'Reportado desde el Dashboard' })
+                });
+                if (res.ok) notify("Notificación enviada con éxito");
+                else notify("El alumno no tiene acudiente vinculado", false);
+            } catch (e) { notify("Error de conexión", false); }
         }
 
         async function removeStudent(id) {
-            if (!confirm("¿Seguro que quieres remover a este integrante?")) return;
+            if (!confirm("¿Eliminar alumno de la base de datos?")) return;
             const res = await fetch(`${API_URL}/students/${id}`, { method: 'DELETE' });
-            if (res.ok) {
-                notify("Eliminado con éxito");
-                init();
-            } else {
-                const data = await res.json();
-                notify("Error: " + data.message, false);
-            }
+            if (res.ok) { notify("Alumno eliminado"); init(); }
         }
+
+        // --- FORMULARIOS Y MODAL ---
+        function openModal(id) {
+    console.log("Abriendo modal para estudiante ID:", id); // Verifica esto en la consola del navegador (F12)
+    document.getElementById('modal_student_id').value = id;
+    document.getElementById('guardianModal').style.display = 'flex';
+}
+
+        function closeModal() { document.getElementById('guardianModal').style.display = 'none'; }
 
         document.getElementById('studentForm').onsubmit = async (e) => {
             e.preventDefault();
@@ -369,21 +331,55 @@
                 birth_date: document.getElementById('birth_date').value,
                 status: document.getElementById('status').value
             };
-
             const res = await fetch(`${API_URL}/students`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
-
-            if (res.ok) {
-                notify("¡Registrado en la Dinastía!");
-                e.target.reset();
-                init();
-            } else {
-                notify("Fallo al registrar", false);
-            }
+            if (res.ok) { notify("¡Alumno registrado!"); e.target.reset(); init(); }
         };
+
+        // Busca este bloque al final de tu script en el index.html
+document.getElementById('guardianForm').onsubmit = async (e) => {
+    e.preventDefault();
+    
+    // 1. Recolectamos los datos del modal
+    const data = {
+        student_id: document.getElementById('modal_student_id').value,
+        first_name: document.getElementById('g_first_name').value,
+        last_name: document.getElementById('g_last_name').value,
+        phone: document.getElementById('g_phone').value,
+        email: document.getElementById('g_email').value,
+        relationship: document.getElementById('g_rel').value
+    };
+
+    try {
+        // 2. Hacemos el envío al backend
+        const res = await fetch(`${API_URL}/acudientes`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+            // Si todo sale bien
+            notify("¡Acudiente vinculado con éxito!");
+            closeModal();
+            e.target.reset();
+            init(); // Esto refresca la lista y el gráfico
+        } else {
+            // 3. SI HAY ERROR: Aquí es donde verás el chisme real de la DB
+            // Si el backend envía 'sqlError', lo mostramos en el notify
+            notify(result.sqlError || result.message || "Error al vincular", false);
+            console.error("Error detallado del servidor:", result);
+        }
+    } catch (err) {
+        notify("No hay conexión con el servidor", false);
+        console.error("Error de red:", err);
+    }
+};
 
         init();
     </script>

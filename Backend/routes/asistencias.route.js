@@ -1,9 +1,19 @@
-import express from 'express';
+import { Router } from 'express';
+// Importamos las funciones con los nombres EXACTOS del controlador
 import { getAsistencia, createAsistencia } from '../controllers/asistencia.controller.js';
 
-const route = express.Router();
+const router = Router();
 
-route.get('/asistencia', getAsistencia);
-route.post('/asistencia', createAsistencia);
+/**
+ * @route   GET /api/asistencia
+ * @desc    Obtener el historial de todas las asistencias
+ */
+router.get('/asistencia', getAsistencia);
 
-export default route;
+/**
+ * @route   POST /api/asistencia
+ * @desc    Registrar una nueva asistencia/inasistencia y notificar por WhatsApp
+ */
+router.post('/asistencia', createAsistencia);
+
+export default router;

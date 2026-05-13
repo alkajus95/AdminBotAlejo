@@ -1,9 +1,10 @@
-import express from 'express';
-import { getAcudiente, createAcudiente } from '../controllers/acudiente.controller.js';
+import { Router } from 'express';
+// Importamos exactamente los nombres que exportamos arriba
+import { createAcudiente, getAcudientes } from '../controllers/acudiente.controller.js';
 
-const route = express.Router();
+const router = Router();
 
-route.get('/acudiente', getAcudiente);
-route.post('/acudiente', createAcudiente);
+router.get('/acudientes', getAcudientes);
+router.post('/acudientes', createAcudiente);
 
-export default route;
+export default router;

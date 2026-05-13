@@ -1,23 +1,35 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 
-// 1. IMPORTAR LAS RUTAS (Aquí es donde estaba el fallo)
+dotenv.config();
+
+import studentRoutes from './routes/students.route.js';
+import acudienteRoutes from './routes/acudientes.route.js';
+import pagoRoutes from './routes/pagos.route.js';
+import asistenciaRoutes from './routes/asistencias.route.js';
+import notificacionRoutes from './routes/notificaciones.route.js';
+import whatsappRoutes from "./modules/whatsapp/whatsapp.routes.js";
 import authRoutes from './routes/auth.route.js';
 import usuarioRoutes from './routes/usuarios.route.js';
-import dashboardRoutes from './routes/dashboard.route.js'; // <-- ASEGÚRATE DE QUE ESTA LÍNEA EXISTA
+import dashboardRoutes from './routes/dashboard.route.js';
 
 const app = express();
 
-// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// 2. CONECTAR LAS RUTAS CON LA API
+app.use('/api', studentRoutes);
+app.use('/api', acudienteRoutes);
+app.use('/api', pagoRoutes);
+app.use('/api', asistenciaRoutes);
+app.use('/api', notificacionRoutes);
+app.use("/api/whatsapp", whatsappRoutes);
 app.use('/api', authRoutes);
 app.use('/api', usuarioRoutes);
-app.use('/api', dashboardRoutes); // <-- AQUÍ SE ACTIVA LA CONEXIÓN
+app.use('/api', dashboardRoutes);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor del Cacique corriendo en http://localhost:${PORT}`);
 });

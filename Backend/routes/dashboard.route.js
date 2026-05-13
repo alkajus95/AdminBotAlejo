@@ -1,16 +1,18 @@
 import { Router } from 'express';
-import { 
-    getStudentStats, 
-    createStudent, 
-    getAllStudents, 
-    deleteStudent // <-- Importante
-} from '../controllers/dashboard.controller.js';
+import { getAllStudents, createStudent, deleteStudent, getStats } from '../controllers/student.controller.js'; 
+import { createAsistencia } from '../controllers/asistencia.controller.js'; 
+import { createAcudiente } from '../controllers/acudiente.controller.js'; 
 
 const router = Router();
 
-router.get('/stats', getStudentStats);
+// Rutas de Estudiantes
 router.get('/students', getAllStudents);
 router.post('/students', createStudent);
-router.delete('/students/:id', deleteStudent); // RUTA PARA BORRAR
+router.delete('/students/:id', deleteStudent);
+router.get('/stats', getStats); // <-- ESTA ES VITAL PARA EL GRÁFICO
+
+// Rutas de Asistencia y Acudientes
+router.post('/asistencia', createAsistencia);
+router.post('/acudientes', createAcudiente);
 
 export default router;
