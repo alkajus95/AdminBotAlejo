@@ -29,8 +29,8 @@ Backend/
 ├── .gitignore      # Archivos excluidos del repositorio
 ├── app.js          # Punto de entrada del servidor
 └── package.json    # Dependencias y scripts de arranque
-
-⚙️ Configuración e Instalación
+```
+## ⚙️ Configuración e Instalación
 1. Requisitos
 Node.js 18+ y MySQL Server.
 
@@ -66,7 +66,7 @@ SET SQL_SAFE_UPDATES = 0;
 
 npm run dev
 
-📱 Solución de Problemas de WhatsApp (Meta API)
+## 📱 Solución de Problemas de WhatsApp (Meta API)
 Error 131030: "Recipient phone number not in allowed list"
 Si el mensaje no llega y la terminal muestra el código 131030, se debe a que estás usando el Sandbox de prueba.
 
@@ -78,7 +78,7 @@ Pagos,POST,/api/pago,Registrar un nuevo abono o cobro.
 Asistencias,POST,/api/asistencia,Registrar entrada/salida.
 Notificaciones,POST,/api/notificacion,Enviar mensaje de WhatsApp.
 
-💡 Buenas Prácticas Sugeridas
+## 💡 Buenas Prácticas Sugeridas
 Validaciones: Asegúrate de que el campo phone en la base de datos incluya el código de país (ej: 57 para Colombia) sin el símbolo +.
 
 Seguridad: Nunca subas el archivo .env a GitHub. Usa el .gitignore proporcionado en este repo.
